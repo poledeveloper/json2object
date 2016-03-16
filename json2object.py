@@ -26,19 +26,19 @@ class jsonObject:
 	
 	primitive_prefix = "@property (nonatomic, assign) "
 	 
-	number_prefix =  " NSNumber "
+	number_prefix =  " NSNumber <Optional> "
 	
 	number = " NSNumber "
 	
-	integer_prefix =  " NSInteger "
+	integer_prefix =  " NSInteger <Optional> "
 	
-	bool_prefix =  " BOOL "
+	bool_prefix =  " BOOL <Optional> "
 	
-	float_prefix =  " float "
+	float_prefix =  " float <Optional> "
 	
-	long_prefix =  " long "
+	long_prefix =  " long <Optional> "
 	
-	string_prefix = " NSString "
+	string_prefix = " NSString <Optional> "
 	
 	string = " NSString "
 	
