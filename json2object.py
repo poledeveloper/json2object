@@ -86,6 +86,7 @@ class jsonObject:
 	def writeImpl2File(self):
 	
 		text_file = open(self.root_class + ".m", "w")
+		text_file.write(self.new_line + "#import \"" + self.root_class + ".h\"" + self.new_line)
 		for  k in self.class_array:
 			text_file.write(self.new_line + self.implementation + k+ self.new_line + self.end+self.new_line)
 		text_file.close()
