@@ -111,6 +111,7 @@ class jsonObject:
 		self.class_array.append(class_name)
 		str =  self.new_line + self.interface +  class_name + self.inherit_operator + self.base_class
 		for  k in decoded_json_string.keys():
+			class_name = self.root_class
 			v = decoded_json_string[k]
 			if isinstance(v,float) or isinstance(v,int) or isinstance(v,long) or isinstance(v,bool):
 				str += self.new_line + self.object_prefix + self.number_prefix + self.pointer+ self.convert(k) + self.line_end
