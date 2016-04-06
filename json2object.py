@@ -115,22 +115,22 @@ class jsonObject:
 			class_name = self.root_class
 			v = decoded_json_string[k]
 			if isinstance(v,float) or isinstance(v,int) or isinstance(v,long) or isinstance(v,bool):
-				str += self.new_line + self.object_prefix + self.number_prefix + self.pointer+ self.convert(k) + self.line_end
+				str += self.new_line + self.object_prefix + self.number_prefix + self.pointer+ k + self.line_end
 			elif isinstance(v,basestring) :
-				str += self.new_line + self.object_prefix +  self.string_prefix + self.pointer + self.convert(k) + self.line_end
+				str += self.new_line + self.object_prefix +  self.string_prefix + self.pointer + k + self.line_end
 			elif isinstance(v,dict):
 				class_name = class_name + self.class_seperator + self.convert(k).capitalize()
-				str += self.new_line + self.object_prefix + class_name + self.pointer + self.convert(k) + self.line_end
+				str += self.new_line + self.object_prefix + class_name + self.pointer + k + self.line_end
 				self.parseJson(v,class_name,False)
 			elif isinstance(v,list) or isinstance(v,tuple) :
 				if len(v) == 0 :
-					self.printError( "key '" + self.convert(k) + "' can not be empty!");
+					self.printError( "key '" + k + "' can not be empty!");
 				value = v[0]
 				if isinstance(value,float) or isinstance(value,int) or isinstance(value,long) or isinstance(value,bool) or isinstance(value,basestring):
-					str += self.new_line + self.object_prefix + " NSMutableArray < Optional> * " + self.convert(k) + self.line_end
+					str += self.new_line + self.object_prefix + " NSMutableArray < Optional> * " + k + self.line_end
 				else:
 					class_name = class_name + self.class_seperator + self.convert(k).capitalize()
-					str += self.new_line + self.object_prefix + " NSMutableArray <" + class_name + ",Optional> * " + self.convert(k) + self.line_end
+					str += self.new_line + self.object_prefix + " NSMutableArray <" + class_name + ",Optional> * " + k + self.line_end
 					self.parseJson(v[0],class_name,True)
 		str += self.new_line+self.end+self.new_line
 		self.class_define_array.append(str)
