@@ -113,7 +113,7 @@ class jsonObject:
 
 	def parseJson (self, decoded_json_string, class_name,isprotocol ):
 		if isprotocol == True :
-			self.class_define_array.append(self.protocol+ class_name +" "+self.new_line+self.end+self.new_line)
+			self.class_define_array.append(self.new_line + self.protocol+ class_name +" "+self.new_line+self.end)
 		self.class_array.append(class_name)
 		str =  self.new_line + self.interface +  class_name + self.inherit_operator + self.base_class
 		for  k in decoded_json_string.keys():
@@ -130,14 +130,14 @@ class jsonObject:
 			elif isinstance(v,list) or isinstance(v,tuple) :
 				if len(v) == 0 :
 					# self.printError( "key '" + k + "' can not be empty!");
-					str += self.new_line + self.object_prefix + " NSMutableArray < Optional> * " + self.removeForbiddenSymbols(k) + self.line_end
+					str += self.new_line + self.object_prefix + " NSMutableArray <Optional> * " + self.removeForbiddenSymbols(k) + self.line_end
 				else:
 					value = v[0]
 					if isinstance(value,float) or isinstance(value,int) or isinstance(value,long) or isinstance(value,bool) or isinstance(value,basestring):
 						str += self.new_line + self.object_prefix + " NSMutableArray < Optional> * " + self.removeForbiddenSymbols(k) + self.line_end
 					else:
 						class_name = class_name + self.class_seperator + self.convert(k).capitalize()
-						str += self.new_line + self.object_prefix + " NSMutableArray <" + class_name + ",Optional> * " + self.removeForbiddenSymbols(k) + self.line_end
+						str += self.new_line + self.object_prefix + " NSMutableArray <" + class_name + ", Optional> * " + self.removeForbiddenSymbols(k) + self.line_end
 						self.parseJson(v[0],class_name,True)
 		str += self.new_line+self.end+self.new_line
 		self.class_define_array.append(str)
