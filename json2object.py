@@ -26,23 +26,23 @@ class jsonObject:
 	
 	primitive_prefix = "@property (nonatomic, assign) "
 	 
-	number_prefix =  " NSNumber <Optional> "
+	number_prefix =  " NSNumber <Optional>"
 	
-	number = " NSNumber "
+	number = " NSNumber"
 	
-	integer_prefix =  " NSInteger <Optional> "
+	integer_prefix =  " NSInteger <Optional>"
 	
-	bool_prefix =  " BOOL <Optional> "
+	bool_prefix =  " BOOL <Optional>"
 	
-	float_prefix =  " float <Optional> "
+	float_prefix =  " float <Optional>"
 	
-	long_prefix =  " long <Optional> "
+	long_prefix =  " long <Optional>"
 	
-	string_prefix = " NSString <Optional> "
+	string_prefix = " NSString <Optional>"
 	
-	string = " NSString "
+	string = " NSString"
 	
-	pointer = " * "
+	pointer = " *"
 	
 	class_seperator = ""
 	
@@ -130,14 +130,14 @@ class jsonObject:
 			elif isinstance(v,list) or isinstance(v,tuple) :
 				if len(v) == 0 :
 					# self.printError( "key '" + k + "' can not be empty!");
-					str += self.new_line + self.object_prefix + " NSMutableArray <Optional> * " + self.removeForbiddenSymbols(k) + self.line_end
+					str += self.new_line + self.object_prefix + " NSMutableArray <Optional> *" + self.removeForbiddenSymbols(k) + self.line_end
 				else:
 					value = v[0]
 					if isinstance(value,float) or isinstance(value,int) or isinstance(value,long) or isinstance(value,bool) or isinstance(value,basestring):
-						str += self.new_line + self.object_prefix + " NSMutableArray < Optional> * " + self.removeForbiddenSymbols(k) + self.line_end
+						str += self.new_line + self.object_prefix + " NSMutableArray <Optional> *" + self.removeForbiddenSymbols(k) + self.line_end
 					else:
 						class_name = class_name + self.class_seperator + self.convert(k).capitalize()
-						str += self.new_line + self.object_prefix + " NSMutableArray <" + class_name + ", Optional> * " + self.removeForbiddenSymbols(k) + self.line_end
+						str += self.new_line + self.object_prefix + " NSMutableArray <" + class_name + ", Optional> *" + self.removeForbiddenSymbols(k) + self.line_end
 						self.parseJson(v[0],class_name,True)
 		str += self.new_line+self.end+self.new_line
 		self.class_define_array.append(str)
